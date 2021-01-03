@@ -1,1 +1,5 @@
-# SCP_SL_Server_Manager
+# SCP_SL_Server_Manager,
+C# 공부용 으로 나둡니다.
+물론 이건 설치와 실행인데요...
+기본 설정이 다운로드\\steamcmd
+로 되 있습니다. 공부중
