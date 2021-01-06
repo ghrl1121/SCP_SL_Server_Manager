@@ -23,7 +23,8 @@ namespace SCP_SL서버_관리기
 
         private void button1_Click(object sender, EventArgs e)
         {
-            string[] lines = { "@echo off", "steamcmd.exe +login anonymous +force_install_dir C:\\scp +app_update 996560 +quit" };
+          if(Directory.Exists()
+            {string[] lines = { "@echo off", "steamcmd.exe +login anonymous +force_install_dir C:\\scp +app_update 996560 +quit" };
             File.WriteAllLines(@"C:\Users\user\Downloads\steamcmd\commd.bat", lines);
 
             Process ps = new Process();
@@ -31,6 +32,7 @@ namespace SCP_SL서버_관리기
             ps.StartInfo.WorkingDirectory = @"C:\Users\user\Downloads\steamcmd";
             ps.Start();
             ps.WaitForExit(1000);
+            }
         }
 
         private void button2_Click(object sender, EventArgs e)
