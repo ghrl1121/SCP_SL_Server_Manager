@@ -23,7 +23,7 @@ namespace SCP_SL서버_관리기
 
         private void button1_Click(object sender, EventArgs e)
         {
-          if(Directory.Exists()
+          if(Directory.Exists(Environment.GetFolderPath(Environment.SpecialFolder.D...)))
             {string[] lines = { "@echo off", "steamcmd.exe +login anonymous +force_install_dir C:\\scp +app_update 996560 +quit" };
             File.WriteAllLines(@"C:\Users\user\Downloads\steamcmd\commd.bat", lines);
 
