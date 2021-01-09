@@ -23,15 +23,25 @@ namespace SCP_SL서버_관리기
 
         private void button1_Click(object sender, EventArgs e)
         {
-          if(Directory.Exists(Environment.GetFolderPath(Environment.SpecialFolder.D...)))
-            {string[] lines = { "@echo off", "steamcmd.exe +login anonymous +force_install_dir C:\\scp +app_update 996560 +quit" };
-            File.WriteAllLines(@"C:\Users\user\Downloads\steamcmd\commd.bat", lines);
+            if (Directory.Exists(Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + @"\steamcmd"))
+                {
+                string[] lines = { "@echo off", "steamcmd.exe +login anonymous +force_install_dir C:\\scp +app_update 996560 +quit" };
+                File.WriteAllLines(Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + @"\steamcmd\commd.bat", lines);
 
-            Process ps = new Process();
-            ps.StartInfo.FileName = "commd.bat";
-            ps.StartInfo.WorkingDirectory = @"C:\Users\user\Downloads\steamcmd";
-            ps.Start();
-            ps.WaitForExit(1000);
+                Process ps = new Process();
+                ps.StartInfo.FileName = "commd.bat";
+                ps.StartInfo.WorkingDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + @"\steamcmd";
+                ps.Start();
+                ps.WaitForExit(1000);
+            }
+            else
+            {
+                MessageBox.Show("앗 이건 바탕화면에 steamcmd 가 있어야 됩니다.!");
+                System.Diagnostics.Process up = new Process();
+                up.StartInfo.FileName = "https://steamcdn-a.akamaihd.net/client/installer/steamcmd.zip";
+                up.Start();
+                up.WaitForExit(1000);
+
             }
         }
 
@@ -40,6 +50,7 @@ namespace SCP_SL서버_관리기
             if(Directory.Exists(@"C:\scp"))
             { if(Directory.Exists(@"C:\Program Files\Mono\bin"))
                 {
+                    MessageBox.Show("첫 실행시 777을 입력 하세요");
                     Process ur = new Process();
                     ur.StartInfo.FileName = "LocalAdmin.exe";
                     ur.StartInfo.WorkingDirectory = @"C:\scp";
@@ -67,7 +78,15 @@ namespace SCP_SL서버_관리기
         {
             if (Directory.Exists((Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)) + @"\SCP Secret Laboratory\config"))
             {
+                string[] lines = { "@echo off", "start \" \" \"%AppData%\\SCP Secret Laboratory\\config\"" };
+                File.WriteAllLines(@"C:\scp\control.bat", lines);
                 MessageBox.Show("설정에 맞게 하세요\n 예)7777 입력 했으면 7777 에 설정 하시면 됩니다.");
+                System.Diagnostics.Process cm = new Process();
+                cm.StartInfo.FileName = "control.bat";
+                cm.StartInfo.WorkingDirectory = @"C:\scp";
+                cm.Start();
+                cm.WaitForExit(1000);
+
 
             }
             else
