@@ -16,9 +16,11 @@ namespace SCP_SL서버_관리기
 {
     public partial class Form1 : Form
     {
+        
         public Form1()
         {
             InitializeComponent();
+            MessageBox.Show(" 읽어 주세요! \n 처음 설치시 바탕화면에 steamcmd 폴더가 있어야 됩니다! \n 설정중입니다. 열나게 찾고 있습니다.;;");
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -36,9 +38,10 @@ namespace SCP_SL서버_관리기
             }
             else
             {
-                MessageBox.Show("앗 이건 바탕화면에 steamcmd 가 있어야 됩니다.!");
+                MessageBox.Show("앗 이건 바탕화면에 steamcmd 폴더 가 있어야 됩니다.!");
+                MessageBox.Show("자동 다운 받는곳으로 이동 합니다.");
                 System.Diagnostics.Process up = new Process();
-                up.StartInfo.FileName = "https://steamcdn-a.akamaihd.net/client/installer/steamcmd.zip";
+                up.StartInfo.FileName = "https://developer.valvesoftware.com/wiki/SteamCMD";
                 up.Start();
                 up.WaitForExit(1000);
 
@@ -50,7 +53,7 @@ namespace SCP_SL서버_관리기
             if(Directory.Exists(@"C:\scp"))
             { if(Directory.Exists(@"C:\Program Files\Mono\bin"))
                 {
-                    MessageBox.Show("첫 실행시 777을 입력 하세요");
+                    MessageBox.Show("첫 실행시 7777을 입력 하세요");
                     Process ur = new Process();
                     ur.StartInfo.FileName = "LocalAdmin.exe";
                     ur.StartInfo.WorkingDirectory = @"C:\scp";
