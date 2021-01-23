@@ -21,6 +21,8 @@ namespace SCP_SL서버_관리기
         {
             InitializeComponent();
             MessageBox.Show(" 읽어 주세요! \n 처음 설치시 바탕화면에 steamcmd 폴더가 있어야 됩니다! \n 설정중입니다. 열나게 찾고 있습니다.;;");
+            MessageBox.Show(" 그리고 설치 장소는 c:\\ 입니다.\n 만약 부족현상시 죄송합니다. 돌아가세요... \n 또는 c:\\ 을 정리하세요(최소 1G 있으면 충분 합니다.)");
+            
         }
 
         private void button1_Click(object sender, EventArgs e)
