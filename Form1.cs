@@ -29,7 +29,7 @@ namespace SCP_SL서버_관리기
         {
             if (Directory.Exists(Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + @"\steamcmd"))
                 {
-                string[] lines = { "@echo off", "steamcmd.exe +login anonymous +force_install_dir C:\\scp +app_update 996560 +quit" };
+                string[] lines = { "@echo off", "steamcmd.exe +login anonymous +force_install_dir C:\\scp +app_update 996560 +quit"+ "pause" };
                 File.WriteAllLines(Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + @"\steamcmd\commd.bat", lines);
 
                 Process ps = new Process();
@@ -37,6 +37,7 @@ namespace SCP_SL서버_관리기
                 ps.StartInfo.WorkingDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + @"\steamcmd";
                 ps.Start();
                 ps.WaitForExit(1000);
+                File.Delete(Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + @"\steamcmd\commd.bat");
             }
             else
             {
@@ -46,6 +47,7 @@ namespace SCP_SL서버_관리기
                 up.StartInfo.FileName = "https://developer.valvesoftware.com/wiki/SteamCMD";
                 up.Start();
                 up.WaitForExit(1000);
+                File.Delete(Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + @"\steamcmd\commd.bat");
 
             }
         }
@@ -62,7 +64,7 @@ namespace SCP_SL서버_관리기
                     ur.Start();
                     ur.WaitForExit(1000);
                 }
-            else
+             else
                 {
                     MessageBox.Show("mono가 설치되어야 실행이 됩니다.\n 아니면 마이크 깨짐 현상 나타날 수 있습니다.!");
                     MessageBox.Show("자동으로 mono 설치로 넘어 갑니다.");
@@ -91,7 +93,7 @@ namespace SCP_SL서버_관리기
                 cm.StartInfo.WorkingDirectory = @"C:\scp";
                 cm.Start();
                 cm.WaitForExit(1000);
-
+                File.Delete(@"C:\scp\control.bat");
 
             }
             else

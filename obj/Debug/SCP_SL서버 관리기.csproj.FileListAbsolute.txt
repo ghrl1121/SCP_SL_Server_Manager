@@ -1,0 +1,13 @@
+D:\첫 시작\ghrl1121\SCP_SL_Server_Manager\obj\Debug\SCP_SL서버 관리기.csprojAssemblyReference.cache
+D:\첫 시작\ghrl1121\SCP_SL_Server_Manager\obj\Debug\SCP_SL서버_관리기.Form1.resources
+D:\첫 시작\ghrl1121\SCP_SL_Server_Manager\obj\Debug\SCP_SL서버_관리기.Properties.Resources.resources
+D:\첫 시작\ghrl1121\SCP_SL_Server_Manager\obj\Debug\SCP_SL서버 관리기.csproj.GenerateResource.cache
+D:\첫 시작\ghrl1121\SCP_SL_Server_Manager\obj\Debug\SCP_SL서버 관리기.csproj.CoreCompileInputs.cache
+D:\첫 시작\ghrl1121\SCP_SL_Server_Manager\bin\Debug\SCP_SL서버 관리기.exe.config
+D:\첫 시작\ghrl1121\SCP_SL_Server_Manager\bin\Debug\SCP_SL서버 관리기.exe
+D:\첫 시작\ghrl1121\SCP_SL_Server_Manager\bin\Debug\SCP_SL서버 관리기.pdb
+D:\첫 시작\ghrl1121\SCP_SL_Server_Manager\bin\Debug\AWSSDK.dll
+D:\첫 시작\ghrl1121\SCP_SL_Server_Manager\bin\Debug\AWSSDK.pdb
+D:\첫 시작\ghrl1121\SCP_SL_Server_Manager\obj\Debug\SCP_SL서버 관리기.csproj.CopyComplete
+D:\첫 시작\ghrl1121\SCP_SL_Server_Manager\obj\Debug\SCP_SL서버 관리기.exe
+D:\첫 시작\ghrl1121\SCP_SL_Server_Manager\obj\Debug\SCP_SL서버 관리기.pdb
