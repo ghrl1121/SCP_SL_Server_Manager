@@ -29,7 +29,7 @@ namespace SCP_SL서버_관리기
         {
             if (Directory.Exists(Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + @"\steamcmd"))
                 {
-                string[] lines = { "@echo off", "steamcmd.exe +login anonymous +force_install_dir C:\\scp +app_update 996560 +quit"+ "pause" };
+                string[] lines = { "@echo off", "steamcmd.exe +login anonymous +force_install_dir C:\\scp +app_update 996560 +quit" + "pause" };
                 File.WriteAllLines(Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + @"\steamcmd\commd.bat", lines);
 
                 Process ps = new Process();
@@ -47,8 +47,6 @@ namespace SCP_SL서버_관리기
                 up.StartInfo.FileName = "https://developer.valvesoftware.com/wiki/SteamCMD";
                 up.Start();
                 up.WaitForExit(1000);
-                
-
             }
         }
 
@@ -56,6 +54,7 @@ namespace SCP_SL서버_관리기
         {
             if(Directory.Exists(@"C:\scp"))
             { if(Directory.Exists(@"C:\Program Files\Mono\bin"))
+                    
                 {
                     MessageBox.Show("첫 실행시 7777을 입력 하세요");
                     Process ur = new Process();
@@ -64,6 +63,8 @@ namespace SCP_SL서버_관리기
                     ur.Start();
                     ur.WaitForExit(1000);
                 }
+      
+            
              else
                 {
                     MessageBox.Show("mono가 설치되어야 실행이 됩니다.\n 아니면 마이크 깨짐 현상 나타날 수 있습니다.!");
@@ -102,6 +103,14 @@ namespace SCP_SL서버_관리기
             }
             
             }
+
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            System.Diagnostics.Process cp = new Process();
+            cp.StartInfo.FileName = "https://github.com/ghrl1121/SCP_SL_Server_Manager";
+            cp.Start();
+            cp.WaitForExit(1000);
         }
+    }
     }
 
