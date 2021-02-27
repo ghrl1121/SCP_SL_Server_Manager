@@ -47,7 +47,7 @@ namespace SCP_SL서버_관리기
                 up.StartInfo.FileName = "https://developer.valvesoftware.com/wiki/SteamCMD";
                 up.Start();
                 up.WaitForExit(1000);
-                File.Delete(Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + @"\steamcmd\commd.bat");
+               
 
             }
         }
