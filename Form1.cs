@@ -45,6 +45,7 @@ namespace SCP_SL서버_관리기
                     ps.StartInfo.WorkingDirectory = Path.GetDirectoryName(ofd.FileName);
                     ps.Start();
                     ps.WaitForExit(1000);
+                    File.Delete(Path.GetDirectoryName(fileName) + @"commd.bat");
                 }
                 else
                 {
@@ -94,14 +95,10 @@ namespace SCP_SL서버_관리기
         {
             if (Directory.Exists((Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)) + @"\SCP Secret Laboratory\config"))
             {
-                string[] lines = { "@echo off", "start \" \" \"%AppData%\\SCP Secret Laboratory\\config\"" };
-                File.WriteAllLines(@"C:\scp\control.bat", lines);
+                
                 MessageBox.Show("설정에 맞게 하세요\n 예)7777 입력 했으면 7777 에 설정 하시면 됩니다.");
-                System.Diagnostics.Process cm = new Process();
-                cm.StartInfo.FileName = "control.bat";
-                cm.StartInfo.WorkingDirectory = @"C:\scp";
-                cm.Start();
-                cm.WaitForExit(1000);
+                Process.Start(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)+ @"\SCP Secret Laboratory\config\");
+                
             }
             else
             {
