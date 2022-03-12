@@ -26,8 +26,9 @@ namespace SCP_SL서버_관리기
 
         private void button1_Click(object sender, EventArgs e)
         {
+            A:
             OpenFileDialog ofd = new OpenFileDialog();
-            ofd.Title = "";
+            ofd.Title = "steamcmd.exe 찾기";
             ofd.Filter = "실행파일(*.exe)|*.exe;";
             ofd.FileName = "steamcmd.exe";
             DialogResult result = ofd.ShowDialog();
@@ -50,6 +51,7 @@ namespace SCP_SL서버_관리기
                 else
                 {
                     MessageBox.Show("steamcmd.exe 를 선택 하셔야 합니다.");
+                    goto A;
                 }
             }
             else if (result == DialogResult.Cancel)
