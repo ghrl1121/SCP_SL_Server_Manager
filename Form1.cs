@@ -45,7 +45,7 @@ namespace SCP_SL서버_관리기
 
         private void button1_Click(object sender, EventArgs e)
         {
-            A:
+        A:
             OpenFileDialog ofd = new OpenFileDialog();
             ofd.Title = "steamcmd.exe 찾기";
             ofd.Filter = "실행파일(*.exe)|*.exe;";
@@ -55,19 +55,19 @@ namespace SCP_SL서버_관리기
             {
 
                 if (Path.GetFileName(ofd.FileName) == "steamcmd.exe")
-                {         
+                {
                     SaveFileDialog saveFileDialog = new SaveFileDialog();
                     saveFileDialog.Title = "저장될 위치 설정";
                     saveFileDialog.FileName = "b.ini";
                     DialogResult saveResult = saveFileDialog.ShowDialog();
                     if (saveResult == DialogResult.OK)
                     {
-                     label3.Text = Path.GetDirectoryName(saveFileDialog.FileName);
-                     string mest = label3.Text;
-                     string[] lines = { "@echo off", "steamcmd.exe +login anonymous +force_install_dir " + mest + " +app_update 996560 +quit" };
-                     File.WriteAllLines(Path.GetDirectoryName(ofd.FileName) + @"\commd.bat", lines);
-                     string[] ping = { mest };
-                     File.WriteAllLines(@"\txat.lal", ping);
+                        label3.Text = Path.GetDirectoryName(saveFileDialog.FileName);
+                        string mest = label3.Text;
+                        string[] lines = { "@echo off", "steamcmd.exe +login anonymous +force_install_dir " + mest + " +app_update 996560 +quit" };
+                        File.WriteAllLines(Path.GetDirectoryName(ofd.FileName) + @"\commd.bat", lines);
+                        string[] ping = { mest };
+                        File.WriteAllLines(@"\txat.lal", ping);
                     }
                     else
                     {
@@ -78,15 +78,17 @@ namespace SCP_SL서버_관리기
                     ps.StartInfo.WorkingDirectory = Path.GetDirectoryName(ofd.FileName);
                     ps.Start();
                     ps.WaitForExit(1000);
-
-                    
+                    File.Delete(Path.GetDirectoryName(ofd.FileName) + @"commd.bat");
                 }
-                else
-                {
+                    
+            
+                    else
+                    {
                     MessageBox.Show("steamcmd.exe 를 선택 하셔야 합니다.");
                     goto A;
-                }
+                    }
             }
+                
             else if (result == DialogResult.Cancel)
             {
                 MessageBox.Show("파일이 없습니까? \n 다운받기 합니다");
