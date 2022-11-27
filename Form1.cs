@@ -22,24 +22,16 @@ namespace SCP_SL서버_관리기
             InitializeComponent();
             //저장하고 세이프되을떼 로딩떼 설치 됬는지 확인
             
-            if(label3.Text == "")
+            if (File.Exists("txat.lal"))
             {
-                OpenFileDialog Apt = new OpenFileDialog();
-                Apt.Title = "txat.lal 를 찾아주세요";
-                Apt.Filter = "읽을파일(*.lal)|*.lal;";
-                DialogResult A = Apt.ShowDialog();
-                if(A == DialogResult.OK)
-                {
-                    using (StreamReader a = new StreamReader(Apt.FileName))
-                    {
-                        string n = a.ReadLine();
-                        label3.Text = n;
-                    }
-                }
+                
+                StreamReader sr = new StreamReader("txat.lal");
+                textBox1.Text = sr.ReadLine();
+                sr.Close();
             }
             else
             {
-
+                textBox1.Text = "설치 먼저 하세요!";
             }
         }
 
@@ -62,23 +54,30 @@ namespace SCP_SL서버_관리기
                     DialogResult saveResult = saveFileDialog.ShowDialog();
                     if (saveResult == DialogResult.OK)
                     {
-                        label3.Text = Path.GetDirectoryName(saveFileDialog.FileName);
-                        string mest = label3.Text;
+                        //선언 하면 저정
+                        textBox1.Text = Path.GetDirectoryName(saveFileDialog.FileName);
+                        string mest = textBox1.Text;
+                        string[] ping = { textBox1.Text };
+                        File.WriteAllLines("txat.lal", ping);
+                        //설치
                         string[] lines = { "@echo off", "steamcmd.exe +login anonymous +force_install_dir " + mest + " +app_update 996560 +quit" };
                         File.WriteAllLines(Path.GetDirectoryName(ofd.FileName) + @"\commd.bat", lines);
-                        string[] ping = { mest };
-                        File.WriteAllLines(@"\txat.lal", ping);
+                        //필요없는 파일 삭제
+                        File.Delete(Path.GetDirectoryName(mest)+@"\b.ini");
                     }
                     else
                     {
                         MessageBox.Show("저장될 위치를 넣어 주세요!");
                     }
+
                     Process ps = new Process();
                     ps.StartInfo.FileName = "commd.bat";
                     ps.StartInfo.WorkingDirectory = Path.GetDirectoryName(ofd.FileName);
                     ps.Start();
                     ps.WaitForExit(1000);
+                    
                     File.Delete(Path.GetDirectoryName(ofd.FileName) + @"commd.bat");
+                    
                 }
                     
             
@@ -101,14 +100,14 @@ namespace SCP_SL서버_관리기
         private void button2_Click(object sender, EventArgs e)
         {
             //변경...
-            if(Directory.Exists(label3.Text))
+            if(Directory.Exists(textBox1.Text))
             { 
                 if(Directory.Exists(@"C:\Program Files\Mono\bin"))
                 {
                     MessageBox.Show("첫 실행시 7777을 입력 하세요");
                     Process ur = new Process();
                     ur.StartInfo.FileName = "LocalAdmin.exe";
-                    ur.StartInfo.WorkingDirectory = label3.Text;
+                    ur.StartInfo.WorkingDirectory = textBox1.Text;
                     ur.Start();
                     ur.WaitForExit(1000);
                 }
@@ -118,7 +117,7 @@ namespace SCP_SL서버_관리기
                     MessageBox.Show("자동으로 mono 설치로 넘어 갑니다.");
                     Process cu = new Process();
                     cu.StartInfo.FileName = "mono.msi";
-                    cu.StartInfo.WorkingDirectory = label3.Text;
+                    cu.StartInfo.WorkingDirectory = textBox1.Text;
                     cu.Start();
                     cu.WaitForExit(1000);
                 }

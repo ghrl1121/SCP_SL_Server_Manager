@@ -36,7 +36,7 @@ namespace SCP_SL서버_관리기
             this.label2 = new System.Windows.Forms.Label();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
-            this.label3 = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // button1
@@ -98,20 +98,21 @@ namespace SCP_SL서버_관리기
             this.linkLabel1.Text = "코드보기";
             this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
             // 
-            // label3
+            // textBox1
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(12, 126);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(0, 12);
-            this.label3.TabIndex = 6;
+            this.textBox1.Enabled = false;
+            this.textBox1.Location = new System.Drawing.Point(12, 129);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(100, 21);
+            this.textBox1.TabIndex = 6;
+            this.textBox1.WordWrap = false;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(484, 211);
-            this.Controls.Add(this.label3);
+            this.ClientSize = new System.Drawing.Size(484, 207);
+            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.linkLabel1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -134,7 +135,7 @@ namespace SCP_SL서버_관리기
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.LinkLabel linkLabel1;
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox textBox1;
     }
 }
 
