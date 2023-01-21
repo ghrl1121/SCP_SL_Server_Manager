@@ -48,6 +48,7 @@ namespace SCP_SL서버_관리기
 
                 if (Path.GetFileName(ofd.FileName) == "steamcmd.exe")
                 {
+                    A:
                     SaveFileDialog saveFileDialog = new SaveFileDialog();
                     saveFileDialog.Title = "저장될 위치 설정";
                     saveFileDialog.FileName = "b.ini";
@@ -68,6 +69,7 @@ namespace SCP_SL서버_관리기
                     else
                     {
                         MessageBox.Show("저장될 위치를 넣어 주세요!");
+                        goto A;
                     }
 
                     Process ps = new Process();
