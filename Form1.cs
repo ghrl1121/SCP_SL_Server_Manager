@@ -61,8 +61,8 @@ namespace SCP_SL서버_관리기
                         string[] ping = { textBox1.Text };
                         File.WriteAllLines("txat.lal", ping);
                         //설치
-                        string[] lines = { "@echo off", "steamcmd.exe +login anonymous +force_install_dir " + mest + " +app_update 996560 +quit" };
-                        File.WriteAllLines(Path.GetDirectoryName(ofd.FileName) + @"\commd.bat", lines);
+                        var nem = new ProcessStartInfo(ofd.FileName, "+loging anonymous +force_install_dir " + mest + " +app_update 996560 +quit");
+                        Process.Start(nem);
                         //필요없는 파일 삭제
                         File.Delete(Path.GetDirectoryName(mest)+@"\b.ini");
                     }
