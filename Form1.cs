@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 using System.Diagnostics;
+using System.Reflection.Emit;
 
 
 
@@ -28,6 +29,14 @@ namespace SCP_SL서버_관리기
                 StreamReader sr = new StreamReader("txat.lal");
                 textBox1.Text = sr.ReadLine();
                 sr.Close();
+                if(Path.GetFileName(textBox1.Text) =="")
+                {
+                    //파일이 있을경우 pass
+                }
+                else
+                {
+                    textBox1.Text = "설치 먼저 하세요!";
+                }
             }
             else
             {
@@ -48,38 +57,31 @@ namespace SCP_SL서버_관리기
 
                 if (Path.GetFileName(ofd.FileName) == "steamcmd.exe")
                 {
-                    B:
-                    SaveFileDialog saveFileDialog = new SaveFileDialog();
-                    saveFileDialog.Title = "저장될 위치 설정";
-                    saveFileDialog.FileName = "b.ini";
-                    DialogResult saveResult = saveFileDialog.ShowDialog();
+                        SaveFileDialog saveFileDialog = new SaveFileDialog();
+                        saveFileDialog.Title = "저장될 위치 설정";
+                        saveFileDialog.FileName = "b.ini";
+                        DialogResult saveResult = saveFileDialog.ShowDialog();
+
                     if (saveResult == DialogResult.OK)
                     {
                         //선언 하면 저정
                         textBox1.Text = Path.GetDirectoryName(saveFileDialog.FileName);
                         string mest = textBox1.Text;
                         string[] ping = { textBox1.Text };
-                        File.WriteAllLines("txat.lal", ping);
-                        //설치
-                        var nem = new ProcessStartInfo(ofd.FileName, "+loging anonymous +force_install_dir " + mest + " +app_update 996560 +quit");
-                        Process.Start(nem);
-                        //필요없는 파일 삭제
-                        File.Delete(Path.GetDirectoryName(mest)+@"\b.ini");
+                        //설치;
+                        string[] lines = { "@echo off", "steamcmd.exe +login anonymous +force_install_dir " + mest + " +app_update 996560 +quit" };
+                        File.WriteAllLines(Path.GetDirectoryName(ofd.FileName) + @"\commd.bat", lines);
+                        Process ps = new Process();
+                        ps.StartInfo.FileName = "commd.bat";
+                        ps.StartInfo.WorkingDirectory = Path.GetDirectoryName(ofd.FileName);
+                        ps.Start();
+                        ps.WaitForExit(1000);
+                        File.WriteAllLines(@"\txat.lal", ping);
                     }
                     else
                     {
-                        MessageBox.Show("저장될 위치를 넣어 주세요!");
-                        goto B;
+                        MessageBox.Show("취소됩니다!");
                     }
-
-                    Process ps = new Process();
-                    ps.StartInfo.FileName = "commd.bat";
-                    ps.StartInfo.WorkingDirectory = Path.GetDirectoryName(ofd.FileName);
-                    ps.Start();
-                    ps.WaitForExit(1000);
-                    
-                    File.Delete(Path.GetDirectoryName(ofd.FileName) + @"commd.bat");
-                    
                 }
                     
             
